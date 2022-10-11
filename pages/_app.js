@@ -1,7 +1,16 @@
-import '../styles/globals.css'
+import { FavoritesProvider } from '../context/FavoritesContext';
+import GlobalStyles from '../components/GlobalStyles';
+import LayoutWrapper from '../components/LayoutWrapper';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+const MyApp = ({ Component, pageProps }) => {
+  return (
+    <FavoritesProvider>
+      <GlobalStyles />
+      <LayoutWrapper>
+        <Component {...pageProps} />
+      </LayoutWrapper>
+    </FavoritesProvider>
+  )
+};
 
 export default MyApp
