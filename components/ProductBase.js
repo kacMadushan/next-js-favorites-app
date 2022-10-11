@@ -1,7 +1,8 @@
+import styled from 'styled-components';
 import { products } from '../data/products';
 import { useFavoritesDispatch, useFavoritesState } from '../context/FavoritesContext';
-import styled from 'styled-components';
 import { COLORS, TYPE_SCALE, WEIGHTS } from '../constants/themes';
+import { types } from '../constants/types';
 import { FavoriteFilled, FavoriteOutline } from './Icons';
 import { motion } from 'framer-motion';
 
@@ -26,12 +27,12 @@ const ProductBase = ({
     const product = products.find(product => product.id === id)
     if (!handleExistFavorite(id)) {
       const favoriteItem = { ...product, favorite: true };
-      dispatch({ type: 'ADD_FAVORITE', payload: { favorite: favoriteItem } })
+      dispatch({ type: types.ADD_FAVORITE_ITEM, payload: { favorite: favoriteItem } })
     }
   };
 
   const handleRemoveFavorite = (id) => {
-    dispatch({ type: 'REMOVE_FAVORITE', payload: { id } })
+    dispatch({ type: types.REMOVE_FAVORITE_ITEM, payload: { id } })
   };
 
   const renderIcon = favorite
